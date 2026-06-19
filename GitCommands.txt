@@ -27,4 +27,4 @@ git remote -v   <-- to verify which remote repository set as origin -->
 git branch      <-- to check which is the current branch -->
 git branch -M branchName    <-- to rename the branch -->
 git branch -b branchName    <-- to create new branch -->
- 
+git checkout branchName     <-- to navigate specific branch --> 
