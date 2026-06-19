@@ -1,0 +1,21 @@
+-------------------------Basic CMD/Poweshell Commands-------------------------
+ls  <-- list or display all files and folders -->
+clear   <-- cleaning bash/terminal/cmd window -->
+cd FolderName   <-- going inside specific folder -->
+cd..    <-- Going outside current folder -->
+pwd     <-- to check working directory /current folder location -->
+ls -a   <-- list or display all files and folders with hidden files and folders (in Poweshell Terminal) -->
+dir -Force or Get-ChildItem -Force      <-- list or display all files and folders with hidden files and folders (in CMD/Linux based Terminal) -->
+mkdir FolderName    <--- to create a folder -->
+
+-------------------------Git Commands-------------------------
+
+git --version   <-- to check the git setup and current git version --->
+git config --global user.name "UserName"    <--to set the username for git -->
+git config --global user.email"EmailId"     <--to set the user email id for git -->
+git config --list   <--to check current user name and email address -->
+git clone repo_link  <--repo link should be https or ssh (ssh only if ssh setup is done) -->
+git status      <-- check the status of the code --->
+git add FileName    <-- For specific file --->
+git add .   <--For all files -->
+git restore --staged FileName   <-- for status staged to unstaged (in simple words undo after add)-->

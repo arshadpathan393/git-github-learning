@@ -1,0 +1,40 @@
+Install Git into local system
+Create account on GitHub (www.github.com)
+Install VS-Code
+Establish relation between Git and GitHub
+Create one repository naming git-github-learning with public and README opt.
+Using VS-Code clone repository into local system using git clone link, check status also.
+If file/code in local machine is modified in that case git status shows it is commited or not.
+
+There are 4 types of status in Git
+1. untracked -> New files that Git doesnt yet track
+2. modified -> Changes happens in local system
+3. staged -> File is ready to be commited
+4. unmodified -> unchanged
+
+                untracked          |        modified
+                (New file)         |         (changed)
+
+                    \                         /
+                     \            add        /  (added but not commited)
+                      \                     /
+                                 staged
+                                    | 
+                                    | commit
+                                    |
+                                 unchanged   
+
+Add & commit
+
+add -> adds new or changed files in your working directory to the git staging area
+    git add FileName (For specific file)
+    git add . (For all files)
+
+    Note :- for status from staged to unstaged 
+            git restore --staged FileName
+
+commit -> commit is the record that we have changed something in code/file.
+    git commit -m "Message"
+    After commmit all changes we do are saved and recorded on local machine not on GitHub.
+
+
