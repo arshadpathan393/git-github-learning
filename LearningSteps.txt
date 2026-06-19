@@ -2,6 +2,8 @@ Install Git into local system
 Create account on GitHub (www.github.com)
 Install VS-Code
 Establish relation between Git and GitHub
+
+-----------------------------Remote repo to Local------------------------------------------------
 Create one repository naming git-github-learning with public and README opt.
 Using VS-Code clone repository into local system using git clone link, check status also.
 If file/code in local machine is modified in that case git status shows it is commited or not.
@@ -25,7 +27,7 @@ There are 4 types of status in Git
                                  unchanged   
 
 Add & commit
-
+````````````
 add -> adds new or changed files in your working directory to the git staging area
     git add FileName (For specific file)
     git add . (For all files)
@@ -35,6 +37,85 @@ add -> adds new or changed files in your working directory to the git staging ar
 
 commit -> commit is the record that we have changed something in code/file.
     git commit -m "Message"
-    After commmit all changes we do are saved and recorded on local machine not on GitHub.
+    After commit all changes we do are saved and recorded on local machine not on GitHub.
 
+Push
+````
+push -> It is used to upload local repository content to remote repository.
+    git push origin main 
+    origin -> this is name for that repository where we had create the clone from remote.
+    main -> branch (branch name)
+                    push
+            Local --------> Remote (Default)   
+
+----------------------------------Local repo to Remote---------------------------------------------
+
+Create repository inside local machine first.
+Initialize the repository to git
+
+Init Command
+````````````
+init -> It is used to create a new git repository on local machine (If we have project on local 
+        machine then to initialze in git this command is used. Hidden .git is created inside
+        local repo)
+        git init 
+
+Create repository on GitHub without description and README.md 
+
+Link Local and Remote repository
+    git remote add origin repo_link -> link both repos 
+
+Verify which remote repository set as origin
+    git remote -v   
+
+Create README.md in local repo
+
+Push local repository to the remote
+    git push origin main -> for push/save the changes to remote(GitHub)
+
+Workflow :- Local Git
+    GitHub Repository --> Clone --> Changes --> Add --> Commit --> Push
+
+Git Branch
+```````````
+Branch -> Different teams working on same project for that purpose they created 
+          copy of that project and works on that specific copy. This is noting but a branch.
+
+    git branch -> to check current branch
+    git branch -M branchName -> to rename the branch
+
+Check that which is current branch. Also rename the branch.
+
+Create new branch inside same local repo
+    git checkout -b branchName -> Create a new branch with branchName
+
+Make some changes on that new branch
+After every change in any feature we have to add and commit then only changes happens.
+
+Navigate all branches u created 
+    git checkout branchName -> to navigate the branch using branchName
+
+Delete the branch 
+    git branch -d branchName -> to delete the existing branch
+    (While deleting any branch for that we have to checkout on that branch to another branch
+    before deleting branch otherwise branch will not be delete)
+
+Check differences
+``````````````````
+Before merging the branch we can check the differences between branches we had created
+    git diff branchName -> to compare commits,branches,files and more...
+    (While checking the differences if we are on main branch and we have to check
+    the differences with feature1 branch then "git diff feature1" this command shows
+    differences between main and feature1 branch)
+
+Merging branch/Code
+```````````````````
+
+We can merge the branches using two ways
+1. Using Git
+    git merge branchName -> to merge two branches (the branch which we are on and the branchName)
+
+
+2. Using GitHub (PR)
+    Pull Request (PR) -> 
 

@@ -19,3 +19,12 @@ git status      <-- check the status of the code --->
 git add FileName    <-- For specific file --->
 git add .   <--For all files -->
 git restore --staged FileName   <-- for status staged to unstaged (in simple words undo after add)-->
+git commit -m "Message"
+git push origin main    <-- for push/save the changes to remote(GitHub) repository -->
+git init    <-- initialze empty git repo in local repo for local machine (hidden .git is created ) -->
+git remote add origin repo_link     <-- link both local and remote repositories. -->
+git remote -v   <-- to verify which remote repository set as origin -->
+git branch      <-- to check which is the current branch -->
+git branch -M branchName    <-- to rename the branch -->
+git branch -b branchName    <-- to create new branch -->
+ 
