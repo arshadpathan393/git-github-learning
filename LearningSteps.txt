@@ -81,25 +81,37 @@ Git Branch
 Branch -> Different teams working on same project for that purpose they created 
           copy of that project and works on that specific copy. This is noting but a branch.
 
-    git branch -> to check current branch
-    git branch -M branchName -> to rename the branch
-
-Check that which is current branch. Also rename the branch.
-
-Create new branch inside same local repo
+    git branch -> to check current branches
+    git branch -r -> to check remote branches
+    git branch -a -> to see all branches from remote and local machine
+    git branch -M branchName -> to rename the branch 
+    
+Create new branch
+````````````````` 
     git checkout -b branchName -> Create a new branch with branchName
 
-Make some changes on that new branch
+Check that which is current branch. Make some changes on that new branch
 After every change in any feature we have to add and commit then only changes happens.
 
 Navigate all branches u created 
     git checkout branchName -> to navigate the branch using branchName
 
-Delete the branch 
-    git branch -d branchName -> to delete the existing branch
+Delete the branch
+````````````````` 
+    git branch -d branchName -> to delete the existing branch from local machine only
     (While deleting any branch for that we have to checkout on that branch to another branch
-    before deleting branch otherwise branch will not be delete)
+    before deleting branch otherwise branch will not be deleted)
 
+    git branch -D branchName -> to force delete
+
+    git branch --delete branchName -> to delete the existing branch from remote also
+
+    git fetch --prune -> remove deleted branch references
+
+    git remote prune origin -> remove deleted branch references
+
+    git remote remove origin -> remove remote repository
+    
 Check differences
 ``````````````````
 Before merging the branch we can check the differences between branches we had created
@@ -117,5 +129,11 @@ We can merge the branches using two ways
 
 
 2. Using GitHub (PR)
-    Pull Request (PR) -> 
-
+    Pull Request (PR) -> Pull request lets you tell about changes you have pushed to a branch
+                        in a repository on GitHub 
+                        
+    When any new branch in created then from GitHub we can merge that new branch into 
+    origin (main branch). In git hub going inside that specific repository under the branch
+    section -> click on new branch -> contribute -> compare and Pull Request -> confirm
+    pull request using comment and discription -> sr.developer or manager checks the pull 
+    request -> they accept or reject the request with comments.

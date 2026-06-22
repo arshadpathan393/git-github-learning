@@ -28,3 +28,11 @@ git branch      <-- to check which is the current branch -->
 git branch -M branchName    <-- to rename the branch -->
 git branch -b branchName    <-- to create new branch -->
 git checkout branchName     <-- to navigate specific branch --> 
+git branch -D branchName    <-- to force delete -->
+git branch --delete branchName  <-- to delete the existing branch from remote also -->
+git fetch --prune   <-- remove deleted branch references -->
+git remote prune origin     <-- remove deleted branch references -->
+git remote remove origin    <-- remove remote repository -->
+git diff branchName     <-- check the differences between branches -->
+git branch -r   <-- to check remote branches -->
+git branch -a   <-- to see all branches from remote and local machine -->
