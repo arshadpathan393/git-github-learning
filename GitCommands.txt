@@ -1,38 +1,212 @@
--------------------------Basic CMD/Poweshell Commands-------------------------
-ls  <-- list or display all files and folders -->
-clear   <-- cleaning bash/terminal/cmd window -->
-cd FolderName   <-- going inside specific folder -->
-cd..    <-- Going outside current folder -->
-pwd     <-- to check working directory /current folder location -->
-ls -a   <-- list or display all files and folders with hidden files and folders (in Poweshell Terminal) -->
-dir -Force or Get-ChildItem -Force      <-- list or display all files and folders with hidden files and folders (in CMD/Linux based Terminal) -->
-mkdir FolderName    <--- to create a folder -->
+-------------------------Basic CMD/PowerShell Commands-------------------------
+ls  
+<-- List/display all files and folders -->
 
--------------------------Git Commands-------------------------
+clear   
+<-- Clear terminal window -->
 
-git --version   <-- to check the git setup and current git version --->
-git config --global user.name "UserName"    <--to set the username for git -->
-git config --global user.email"EmailId"     <--to set the user email id for git -->
-git config --list   <--to check current user name and email address -->
-git clone repo_link  <--repo link should be https or ssh (ssh only if ssh setup is done) -->
-git status      <-- check the status of the code --->
-git add FileName    <-- For specific file --->
-git add .   <--For all files -->
-git restore --staged FileName   <-- for status staged to unstaged (in simple words undo after add)-->
+cd FolderName   
+<-- Move inside a specific folder -->
+
+cd ..   
+<-- Move one level outside current folder -->
+
+pwd     
+<-- Show current working directory -->
+
+ls -a   
+<-- Show all files including hidden files (Linux/Git Bash) -->
+
+dir -Force or Get-ChildItem -Force  
+<-- Show all files including hidden files (PowerShell) -->
+
+mkdir FolderName    
+<-- Create a new folder -->
+
+-----------------------------Git Configuration Commands-------------------------
+git --version  
+<-- Check Git installation and version -->
+
+git config --global user.name "UserName"
+<-- Set Git username -->
+
+git config --global user.email "EmailId"
+<-- Set Git email -->
+
+git config --list
+<-- View Git configuration -->
+
+------------------------------Repository Commands---------------------------------
+
+git init
+<-- Initialize a new Git repository (creates hidden .git folder) -->
+
+git clone repo_link
+<-- Clone remote repository to local machine -->
+
+git remote add origin repo_link
+<-- Link local repository with remote repository -->
+
+git remote -v
+<-- Verify linked remote repository -->
+
+git remote remove origin
+<-- Remove remote repository connection -->
+
+----------------------------------Status Commands-------------------------------------
+
+git status
+<-- Check current repository status -->
+
+----------------------------------Add & Commit Commands-------------------------------
+
+git add FileName
+<-- Stage a specific file -->
+
+git add .
+<-- Stage all files -->
+
+git restore --staged FileName
+<-- Move file from staged to unstaged -->
+
 git commit -m "Message"
-git push origin main    <-- for push/save the changes to remote(GitHub) repository -->
-git init    <-- initialze empty git repo in local repo for local machine (hidden .git is created ) -->
-git remote add origin repo_link     <-- link both local and remote repositories. -->
-git remote -v   <-- to verify which remote repository set as origin -->
-git branch      <-- to check which is the current branch -->
-git branch -M branchName    <-- to rename the branch -->
-git branch -b branchName    <-- to create new branch -->
-git checkout branchName     <-- to navigate specific branch --> 
-git branch -D branchName    <-- to force delete -->
-git branch --delete branchName  <-- to delete the existing branch from remote also -->
-git fetch --prune   <-- remove deleted branch references -->
-git remote prune origin     <-- remove deleted branch references -->
-git remote remove origin    <-- remove remote repository -->
-git diff branchName     <-- check the differences between branches -->
-git branch -r   <-- to check remote branches -->
-git branch -a   <-- to see all branches from remote and local machine -->
+<-- Save changes to local Git history -->
+
+--------------------------------Push & Pull Commands------------------------------------
+
+git push origin main
+<-- Push local commits to GitHub -->
+
+git pull origin main
+<-- Download and merge latest changes from GitHub -->
+
+git fetch
+<-- Download changes from remote without merging -->
+
+git fetch --prune
+<-- Remove deleted remote branch references -->
+
+git remote prune origin
+<-- Remove stale remote branch references -->
+
+-------------------------Branch Commands-------------------------
+
+git branch
+<-- List local branches -->
+
+git branch -r
+<-- List remote branches -->
+
+git branch -a
+<-- List all branches (local + remote) -->
+
+git branch branchName
+<-- Create a new branch -->
+
+git checkout -b branchName
+<-- Create and switch to new branch -->
+
+git checkout branchName
+<-- Switch to existing branch -->
+
+git branch -M branchName
+<-- Rename current branch -->
+
+git branch -d branchName
+<-- Delete branch (safe delete) -->
+
+git branch -D branchName
+<-- Force delete branch -->
+
+git push origin --delete branchName
+<-- Delete branch from remote repository --
+
+-------------------------Difference Commands-------------------------
+
+git diff branchName
+<-- Compare current branch with another branch -->
+
+git diff
+<-- Show unstaged changes -->
+
+---------------------------Merge Commands-----------------------------
+
+git merge branchName
+<-- Merge specified branch into current branch -->
+    Example:
+    git checkout main
+    git merge feature1
+
+-------------------------Log Commands-------------------------
+
+git log
+<-- Show complete commit history -->
+
+git log --oneline
+<-- Show commit history in one-line format -->
+
+-------------------------HEAD Commands-------------------------
+
+git checkout
+<-- Move HEAD to specific commit (Detached HEAD state) -->
+
+-------------------------Restore Commands-------------------------
+
+git restore FileName
+<-- Undo unstaged changes and restore last committed version -->
+
+git restore --staged FileName
+<-- Remove file from staging area -->
+
+-------------------------Reset Commands-------------------------
+
+git reset --soft
+<-- Undo commit but keep changes staged -->
+
+git reset
+<-- Undo commit and unstage changes (Mixed Reset) -->
+
+git reset --hard
+<-- Undo commit and delete all changes -->
+
+-------------------------Fork Workflow Commands-------------------------
+
+git clone
+<-- Clone your forked repository -->
+
+git push origin main
+<-- Push changes to your fork -->
+
+-------------------------Frequently Used Workflow-------------------------
+
+Remote Repo → Local
+
+    git clone repo_link
+    git status
+    git add .
+    git commit -m "Message"
+    git push origin main
+
+Local Repo → Remote
+
+    git init
+    git remote add origin repo_link
+    git add .
+    git commit -m "Initial Commit"
+    git push origin main
+
+Branch Workflow
+
+    git checkout -b feature1
+    git add .
+    git commit -m "Feature completed"
+    git checkout main
+    git merge feature1
+    git push origin main
+
+Delete Branch Workflow
+
+    git checkout main
+    git branch -d feature1
+    git push origin --delete feature1
+    git fetch --prune

@@ -1,139 +1,395 @@
-Install Git into local system
-Create account on GitHub (www.github.com)
-Install VS-Code
-Establish relation between Git and GitHub
+Install Git into Local System
+``````````````````````````````
+    Git is a version control system used to track code changes.
+    Steps to install Git:
+        Download Git from https://git-scm.com/
+        Install using default settings
+        Verify installation:
+        git --version
 
------------------------------Remote repo to Local------------------------------------------------
-Create one repository naming git-github-learning with public and README opt.
-Using VS-Code clone repository into local system using git clone link, check status also.
-If file/code in local machine is modified in that case git status shows it is commited or not.
+        After installation:
+            Git becomes available in terminal / command prompt
 
-There are 4 types of status in Git
-1. untracked -> New files that Git doesnt yet track
-2. modified -> Changes happens in local system
-3. staged -> File is ready to be commited
-4. unmodified -> unchanged
+Create GitHub Account
+`````````````````````
+    GitHub is a cloud platform to host Git repositories.
+    Steps:
+        Go to https://github.com
+        Sign up with email
+        Verify account
+        Set username and profile
+    Now you can:
+        Create repositories
+        Push code from local system
+        Collaborate with others
 
-                untracked          |        modified
-                (New file)         |         (changed)
+Install VS Code
+```````````````
+    VS Code is a code editor used for Git + development workflow.
+    Steps:
+        Download from https://code.visualstudio.com/
+        Install normally
+        Install extensions:
+        Git Graph (optional)
+        GitLens (optional)
+        GitHub Pull Requests (optional)
+    Check Git integration:
+    git --version (inside VS Code terminal)
 
-                    \                         /
-                     \            add        /  (added but not commited)
-                      \                     /
-                                 staged
-                                    | 
-                                    | commit
-                                    |
-                                 unchanged   
+Establish Relation Between Git and GitHub
+`````````````````````````````````````````
+    We connect local Git with GitHub using authentication.
+    Steps:
+        Configure Git username:
+        git config --global user.name "YourName"
+        Configure email:
+        git config --global user.email "your@email.com"
+        Verify config:
+        git config --list
+        Connect GitHub using:
+            HTTPS (username/password or token)
+            SSH (secure key-based connection)
+        Now Git (local) + GitHub (remote) are linked
 
-Add & commit
-````````````
-add -> adds new or changed files in your working directory to the git staging area
-    git add FileName (For specific file)
-    git add . (For all files)
+----------------------------Remote Repo → Local (Clone Workflow)--------------------------------
 
-    Note :- for status from staged to unstaged 
-            git restore --staged FileName
+Create Repository on GitHub
+->  Go to GitHub
+    Click "New Repository"
+    Name: git-github-learning
+    Select Public
+    Add README file
+    Create repository
 
-commit -> commit is the record that we have changed something in code/file.
-    git commit -m "Message"
-    After commit all changes we do are saved and recorded on local machine not on GitHub.
+Clone Repository into Local System
+-> Command: git clone <repo-link>
+    Example:git clone https://github.com/user/git-github-learning.git
+    After cloning:
+    cd git-github-learning
 
-Push
-````
-push -> It is used to upload local repository content to remote repository.
-    git push origin main 
-    origin -> this is name for that repository where we had create the clone from remote.
-    main -> branch (branch name)
+Check Status
+    git status -> Shows tracked files/untracked files/modifications
+
+Git File States
+```````````````
+There are 4 main states:
+    1. Untracked -> New file not tracked by Git
+    2. Modified -> File is changed but not staged
+    3. Staged -> File is ready to commit
+    4. Unmodified -> File is already committed and unchanged
+
+Flow Diagram:
+
+    untracked  ──add──>  staged  ──commit──>  unmodified
+         ↑               |
+         |               ↓
+       modified <─────────
+
+Add & Commit
+`````````````
+Add (Staging area) -> Adds files to staging area
+Commands:
+    git add fileName -> specific file
+    git add . -> all files
+Remove from staging:
+    git restore --staged fileName
+
+Commit -> Saves snapshot in Git history
+Command:
+    git commit -m "Your message"
+    Example:
+    git commit -m "Initial commit"
+    Note:- Commit is saved locally, not on GitHub
+
+Push (Local → Remote)
+`````````````````````
+Push uploads local commits to GitHub
+Command:
+    git push origin main
+Meaning:
+    origin -> remote repo name
+    main   -> branch name
+Flow:
+    Local repo  --------->  GitHub repo
                     push
-            Local --------> Remote (Default)   
-
-----------------------------------Local repo to Remote---------------------------------------------
-
-Create repository inside local machine first.
-Initialize the repository to git
-
-Init Command
-````````````
-init -> It is used to create a new git repository on local machine (If we have project on local 
-        machine then to initialze in git this command is used. Hidden .git is created inside
-        local repo)
-        git init 
-
-Create repository on GitHub without description and README.md 
-
-Link Local and Remote repository
-    git remote add origin repo_link -> link both repos 
-
-Verify which remote repository set as origin
-    git remote -v   
-
-Create README.md in local repo
-
-Push local repository to the remote
-    git push origin main -> for push/save the changes to remote(GitHub)
-
-Workflow :- Local Git
+    Local Git :
     GitHub Repository --> Clone --> Changes --> Add --> Commit --> Push
 
-Git Branch
-```````````
-Branch -> Different teams working on same project for that purpose they created 
-          copy of that project and works on that specific copy. This is noting but a branch.
+----------------------------------Local repo to Remote-----------------------------------------
 
-    git branch -> to check current branches
+Create repository (folder) inside local machine first.
+Initialize the repository to git
+
+Step 1: Initialize Git
+    init -> It is used to create a new git repository on local machine (If we have project 
+    on local machine then to initialze in git this command is used. Hidden .git is created inside
+    local repo)
+    git init -> Creates hidden .git folder  
+
+Step 2: Create GitHub repo
+        Create empty repository (no README)
+
+Step 3: Link Local and Remote repository
+        git remote add origin <repo-link>
+        git remote -v -> Check remote which is linked to local
+
+Step 4: Create README.md in local repo
+
+Step 5: Push local repository (code) to the remote
+        git push origin main
+
+--------------------------------------------------------Git Branch--------------------------------------------------------
+
+Branch  -> A branch is a separate line of development in a project. It allows different teams or 
+        developers to work independently on the same project by creating a copy of the codebase.
+        -> separate version of project for parallel work
+
+    git branch -> to check branches
     git branch -r -> to check remote branches
     git branch -a -> to see all branches from remote and local machine
     git branch -M branchName -> to rename the branch 
     
-Create new branch
-````````````````` 
-    git checkout -b branchName -> Create a new branch with branchName
+Create & Switch Branch
+``````````````````````
+    git branch branchName -> Create a new branch with branchName
+    git checkout -b branchName -> Create a new branch with branchName and switch on that branch
+    
+    Check that which is current branch. Make some changes on that new branch
+    After every change in any branch we have to add and commit then only changes happens.
 
-Check that which is current branch. Make some changes on that new branch
-After every change in any feature we have to add and commit then only changes happens.
-
-Navigate all branches u created 
+    Navigate/Switching branches u created 
     git checkout branchName -> to navigate the branch using branchName
 
 Delete the branch
 ````````````````` 
-    git branch -d branchName -> to delete the existing branch from local machine only
-    (While deleting any branch for that we have to checkout on that branch to another branch
-    before deleting branch otherwise branch will not be deleted)
+    git branch -d branchName -> Deletes an existing branch from the local repository.
+        Git prevents deletion if the branch contains unmerged changes.
+    git branch -D branchName -> Force deletes an existing branch from the local repository.
+    Note:
+        Before deleting a branch, switch to another branch because Git does not allow deletion 
+        of the branch you are currently on.
+    Example:
+        git checkout main
+        git branch -d feature1
+        git push origin --delete branchName -> Deletes the branch from the remote repository.
+        git fetch --prune
+        or
+        git remote prune origin -> Removes stale references to deleted remote branches from 
+                                   the local repository.
+        git remote remove origin -> Removes the remote repository connection (origin) from the 
+                                   local repository. It does not delete any branches from GitHub.
 
-    git branch -D branchName -> to force delete
-
-    git branch --delete branchName -> to delete the existing branch from remote also
-
-    git fetch --prune -> remove deleted branch references
-
-    git remote prune origin -> remove deleted branch references
-
-    git remote remove origin -> remove remote repository
-    
 Check differences
 ``````````````````
 Before merging the branch we can check the differences between branches we had created
+    
     git diff branchName -> to compare commits,branches,files and more...
-    (While checking the differences if we are on main branch and we have to check
-    the differences with feature1 branch then "git diff feature1" this command shows
-    differences between main and feature1 branch)
+        (While checking the differences if we are on main branch and we have to check
+        the differences with feature1 branch then "git diff feature1" this command shows
+        differences between main and feature1 branch)
 
-Merging branch/Code
-```````````````````
+-----------------------------------------------Merging branch/Code-----------------------------------------------
 
 We can merge the branches using two ways
 1. Using Git
-    git merge branchName -> to merge two branches (the branch which we are on and the branchName)
+    A branch can be merged into another branch using Git commands from the terminal.
+    Steps:
+    1. git checkout main -> Switch to the branch where you want to merge the changes(target branch) 
+    2. git pull origin main -> Pull the latest changes from the remote repository
+    3. git merge <branch-name> -> Merge the source branch into the current branch
+        Note: git merge <branch-name>
+                merges the specified branch (branch-name) into the branch you are currently on. 
+                In other words, it combines the changes from branch-name with the current branch.
+    4. If there are no merge conflicts, Git will automatically merge the changes.
+    5. git add . -> If a merge conflict occurs, resolve the conflicts in the affected files and 
+       stage the resolved files
+    6. git commit -m "Merged feature-login into main" -> Complete the merge by creating a merge 
+                                                        commit (if required)
+    7. git push origin main -> Push the updated branch to the remote repository
+
+After these steps, the changes from the source branch will be successfully merged into the 
+target branch.                                                    
 
 
 2. Using GitHub (PR)
     Pull Request (PR) -> Pull request lets you tell about changes you have pushed to a branch
                         in a repository on GitHub 
-                        
-    When any new branch in created then from GitHub we can merge that new branch into 
-    origin (main branch). In git hub going inside that specific repository under the branch
-    section -> click on new branch -> contribute -> compare and Pull Request -> confirm
-    pull request using comment and discription -> sr.developer or manager checks the pull 
-    request -> they accept or reject the request with comments.
+
+    When a new branch is created, the changes can be merged into the `main` branch through GitHub
+    using a Pull Request (PR).
+
+    Steps to create and merge a Pull Request:
+
+    1. Go to the specific repository on GitHub.
+    2. Open the **Branches** section and select the newly created branch.
+    3. Click **Contribute** and then select **Open Pull Request** (or **Compare & Pull Request**).
+    4. Add a meaningful title, description, and any relevant comments explaining the changes.
+    5. Submit the Pull Request for review.
+    6. A senior developer, team lead, or manager reviews the Pull Request.
+    7. Based on the review, they may:
+        * **Approve and merge** the changes into the `main` branch, or
+        * **Request changes** and provide comments for improvement.
+    8. After the requested changes are made and approved, the Pull Request can be merged into 
+        the `main` branch.
+
+Merge Conflict
+``````````````
+A merge conflict occurs when Git cannot automatically merge changes because the same part of 
+a file has been modified differently in two branches. Git requires a developer to manually 
+review and resolve the conflicting changes before the branches can be merged.
+
+For example, If Developer A changes line 10 in the main branch and Developer B changes the 
+same line differently in a feature branch, Git will create a merge conflict when attempting 
+to merge the branches. The developer must decide which change to keep or how to combine them.
+
+---------------------------------HEAD, Git Log, Reset & Restore---------------------------------
+HEAD 
+````
+HEAD = current position in Git, it shows where you are currently working
+Normal state: HEAD → main → latest commit
+Detached HEAD state: HEAD → commit (not attached to any branch)
+Happens when you checkout a commit: git checkout <commit-hash>
+
+Git Log
+```````
+git log or git log --oneline -> commit history with hash values
+
+What is commit hash?
+-> Each commit has a unique ID (hash) 
+-> We use this hash to :
+    - Reset to a specific point move 
+    - HEAD backward
+
+Git Reset & Restore (Stage-wise Flow)
+`````````````````````````````````````
+1. Working Directory (Unstaged)
+
+    You modify a file, but it is not yet added to Git staging.
+    Restore from Unstaged → undo changes
+    git restore <file> -> Removes changes in working directory, file goes back to last committed 
+                        version restored to last commit.
+
+2. Staging Area (Staged)
+
+    File is added using  git add .
+    Restore from Staged → Unstaged
+    git restore --staged <file> -> Removes file from staging area Keeps changes in working 
+                                directory
+    staged → unstaged
+
+3. Commit (Committed State)
+
+    Changes are saved in Git history
+    Commit: A → B → C (HEAD)
+    Reset from Commit → move HEAD backward
+    git reset -> Used to undo commits
+
+    Step 1: Find commit using log
+    ```````
+    git log --oneline
+    Example:
+        a1b2c3d Commit C
+        b2c3d4e Commit B
+        c3d4e5f Commit A
+    We use this hash in reset
+
+    Reset types (Commit level undo) :
+    ``````````````````````````````````
+    1. Soft Reset (keep staged)
+        git reset --soft <hash>
+        Commit → Staged
+    Undo commit but keep changes ready
+
+    2. Mixed Reset (default)
+        git reset <hash>
+        Commit → Unstaged
+    Undo commit and unstage changes
+    
+    3. Hard Reset
+        git reset --hard <hash>
+        Commit → Deleted completely
+    Deletes all changes permanently
+
+    * Single Reset
+    Before:
+    A → B → C (HEAD)
+    Command:
+    git reset --hard <B_hash>
+    After:
+    A → B (HEAD)
+    * Multiple Reset
+    Before:
+    A → B → C → D → E (HEAD)
+    Command:
+    git reset --hard <B_hash>
+    After:
+    A → B (HEAD)
+    All commits after B are removed from history
+
+    RESET vs RESTORE
+    ````````````````
+    Feature	        reset	        restore
+    ```````````````````````````````````````````
+    Level	        Commit level	File level
+    Uses	        git log hash	file name
+    Affects HEAD	Yes	            No
+    Risk	        High	        Low
+
+--------------------------------------Git Fork --------------------------------------------
+
+Fork -> Copy of a repository on GitHub
+        It creates your own version of someone else’s repository
+        You can freely make changes without affecting the original project
+
+Fork Flow (Real-world idea)
+    Original Repo (Owner)
+            ↓ Fork
+    Your GitHub Copy (Forked Repo)
+        1. Original Repository (Source)
+        This is the main project on GitHub
+        You can view and clone
+        You usually don’t have write access
+        Owner Repo → main project
+
+        2. Forking the Repository
+        When you click Fork on GitHub
+        What happens -> GitHub creates a copy of the repo in your account
+                        You now have full control of your copy
+                        Original Repo → Your Forked Repo
+        
+        3. Your Forked Repository
+        This is now your independent copy
+        You can -> modify code/create branches/commit changes
+        Your Repo (Forked) → full control
+        
+        4. Clone to Local (Optional step)
+        git clone <your-fork-url>
+        GitHub Fork → Local Machine
+        Now you work locally like normal Git project:
+        modify files -> stage changes -> commit changes
+        
+        5. Push Changes to Your Fork
+        git push origin main -> Local to Your Forked Repo
+
+        6. Pull Request (PR)
+        After changes are done:
+        You send changes back to original repo using PR
+
+Your Fork → Pull Request → Original Repo
+
+Full Fork Workflow
+``````````````````
+        Original Repo
+              ↓ Fork
+        Your GitHub Repo
+              ↓ Clone
+        Local Machine
+              ↓ Changes + Commit
+        Your Forked Repo
+              ↓ Pull Request
+        Original Repo (Owner)
+
+Why Fork is used ?
+-> You don’t have permission to directly modify main repo
+-> You can experiment safely
+-> Used in open-source projects
